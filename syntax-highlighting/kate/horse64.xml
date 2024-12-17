@@ -146,6 +146,8 @@ This is a syntax highlighting intended for kate and other KDE editors.
          String="import" additionalDeliminator="."/>
         <keyword attribute="BuiltinFunc" context="#stay" String="builtinfunc"/>
         <keyword attribute="BuiltinVar" context="#stay" String="builtinvar"/>
+        <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
+         String="prep\{"/>
 
         <WordDetect attribute="Control" context="WithStmt"
          String="with"/>
@@ -195,12 +197,31 @@ This is a syntax highlighting intended for kate and other KDE editors.
          char="-" char1="&gt;"/>
         <AnyChar attribute="OperatorSymbol" context="#stay"
          String=".=~+-*/%&amp;|^&gt;&lt;"/>
+        <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
+         String="prep\{"/>
+      </context>
+      
+      <context name="PrepStmtBlock" attribute="Preprocessor"
+          fallthroughContext="#pop" lineEndContext="#stay">
+        <DetectSpaces/>
+        <RegExpr attribute="Preprocessor" String="[^\}\{\'\&quot;]"/>
+        <DetectChar attribute="Preprocessor"
+         context="PrepStringDouble" char="&quot;"/>
+        <DetectChar attribute="Preprocessor"
+         context="PrepStringSingle"
+         char="'"/>
+        <DetectChar char="{" attribute="Preprocessor"
+         context="PrepStmtBlock"/>
+        <DetectChar char="}" attribute="Preprocessor"
+         context="#pop"/>
       </context>
 
       <context name="NamedItemVarHadName" attribute="Import"
           fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
+        <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
+         String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
          lookAhead="true"/>
         <DetectChar char="," attribute="OperatorSymbol"
@@ -215,6 +236,8 @@ This is a syntax highlighting intended for kate and other KDE editors.
           fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
+        <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
+         String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
          lookAhead="true"/>
         <RegExpr attribute="ItemName" context="#pop!NamedItemVarHadName"
@@ -227,6 +250,8 @@ This is a syntax highlighting intended for kate and other KDE editors.
           fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
+        <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
+         String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
          lookAhead="true"/>
         <DetectChar char="." attribute="OperatorSymbol"
@@ -241,6 +266,8 @@ This is a syntax highlighting intended for kate and other KDE editors.
           fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
+        <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
+         String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
          lookAhead="true"/>
         <DetectChar char="." attribute="OperatorSymbol"
@@ -279,6 +306,8 @@ This is a syntax highlighting intended for kate and other KDE editors.
         <keyword String="nameditemkeywords" context="#pop"
          lookAhead="true"/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
+        <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
+         String="prep\{"/>
         <RegExpr attribute="ModuleRef" context="#stay"
          String="&IDENT;"/>
         <DetectChar char="." attribute="OtherSymbol" context="#stay"/>
@@ -325,6 +354,26 @@ This is a syntax highlighting intended for kate and other KDE editors.
          String="\\['&quot;ntr\\]" context="#stay"/>
       </context>
 
+      <context name="PrepStringSingle" attribute="Preprocessor"
+         lineEndContext="#stay" dynamic="true">
+        <IncludeRules context="prepquoteescape"/>
+        <StringDetect attribute="Preprocessor" context="#pop" String="'"
+         dynamic="true"/>
+      </context>
+
+      <context name="PrepStringDouble" attribute="Preprocessor"
+         lineEndContext="#stay" dynamic="true">
+        <IncludeRules context="prepquoteescape"/>
+        <StringDetect attribute="Preprocessor" context="#pop" String="&quot;"
+         dynamic="true"/>
+      </context>
+
+      <context name="prepquoteescape" attribute="Preprocessor"
+         lineEndContext="#stay">
+        <RegExpr attribute="Preprocessor"
+         String="\\['&quot;ntr\\]" context="#stay"/>
+      </context>
+
       <context name="Error" attribute="Error" lineEndContext="#stay">
       </context>
     </contexts>
@@ -345,6 +394,7 @@ This is a syntax highlighting intended for kate and other KDE editors.
       <itemData name="BuiltinVar" defStyleNum="dsBuiltIn"
        spellChecking="false"/>
       <itemData name="Comment" defStyleNum="dsComment"/>
+      <itemData name="Preprocessor" defStyleNum="dsAnnotation"/>
       <itemData name="DocComment" defStyleNum="dsDocumentation"/>
       <itemData name="Control" defStyleNum="dsControlFlow"
        spellChecking="false"/>
