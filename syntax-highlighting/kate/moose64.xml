@@ -134,170 +134,175 @@ This is a syntax highlighting intended for kate and other KDE editors.
       <context name="Normal" attribute="NormalText"
                lineEndContext="#stay">
         <Detect2Chars attribute="DocComment" context="DocComment"
-         char="#" char1="#"/>
+                      char="#" char1="#"/>
         <DetectChar attribute="Comment" context="Comment" char="#"/>
 
         <DetectSpaces/>
 
-        <DetectChar attribute="Strings" context="StringDouble" char="&quot;"/>
-        <RegExpr attribute="Strings" context="StringDouble" String="b&quot;"/>
+        <DetectChar attribute="Strings" context="StringDouble"
+                    char="&quot;"/>
+        <RegExpr attribute="Strings" context="StringDouble"
+                 String="c&quot;"/>
         <DetectChar attribute="Strings" context="StringSingle"
-         char="'"/>
+                    char="'"/>
         <RegExpr attribute="Strings" context="StringSingle"
-         String="b'"/>
+                 String="c'"/>
         <WordDetect attribute="Import" context="Import"
-         String="import" additionalDeliminator="."/>
+                    String="import" additionalDeliminator="."/>
         <WordDetect attribute="Import" context="CImport"
-         String="c_import" additionalDeliminator="."/>
+                    String="c_import" additionalDeliminator="."/>
         <WordDetect attribute="Control" context="DoCStmt"
-         String="do" additionalDeliminator="."/>
-        <keyword attribute="BuiltinFunc" context="#stay" String="builtinfunc"/>
-        <keyword attribute="BuiltinVar" context="#stay" String="builtinvar"/>
+                    String="do" additionalDeliminator="."/>
+        <keyword attribute="BuiltinFunc" context="#stay"
+                 String="builtinfunc"/>
+        <keyword attribute="BuiltinVar" context="#stay"
+                 String="builtinvar"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
 
         <WordDetect attribute="Control" context="WithStmt"
-         String="with"/>
+                    String="with"/>
         <WordDetect attribute="DeclKeyword" context="NamedItemVar"
-         String="var"/>
-         <WordDetect attribute="DeclKeyword" context="NamedItemVar"
-         String="const"/>
+                    String="var"/>
+        <WordDetect attribute="DeclKeyword" context="NamedItemVar"
+                    String="const"/>
         <keyword attribute="DeclKeyword" context="NamedItem"
-         String="nameditemkeywords"/>
+                 String="nameditemkeywords"/>
         <keyword attribute="Control" context="NamedItem"
-         String="nameditemcontrolkeywords"/>
+                 String="nameditemcontrolkeywords"/>
         <IncludeRules context="Expression"/>
        </context>
        <context name="Expression" attribute="NormalText"
-          lineEndContext="#stay">
+                lineEndContext="#stay">
         <keyword attribute="Keyword" context="#stay"
-         String="keywords"/>
+                 String="keywords"/>
         <keyword attribute="SpecialValue" context="#stay"
-         String="specialvalues" additionalDeliminator="."/>
+                 String="specialvalues" additionalDeliminator="."/>
         <WordDetect attribute="SelfVar" context="#stay"
-         String="self" additionalDeliminator="."/>
+                    String="self" additionalDeliminator="."/>
         <keyword attribute="Control" context="#stay"
-         String="control"/>
+                 String="control"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
 
         <RegExpr attribute="Identifier" context="#stay"
-         String="&IDENT;"/>
+                 String="&IDENT;"/>
 
         <RegExpr attribute="Number" context="#stay"
-         String="0(x[a-fA-F0-9]+|b[01]+|[0-9]*(\.[0-9]+)?)"/>
+                 String="0(x[a-fA-F0-9]+|b[01]+|[0-9]*(\.[0-9]+)?)"/>
         <RegExpr attribute="Number" context="#stay"
-         String="[0-9]+(\.[0-9]+)?"/>
+                 String="[0-9]+(\.[0-9]+)?"/>
 
         <Detect2Chars attribute="Error" context="#stay" char="~"
-         char1="="/>
+                      char1="="/>
         <Detect2Chars attribute="Error" context="#stay" char="+"
-         char1="+"/>
+                      char1="+"/>
         <Detect2Chars attribute="Error" context="#stay" char="-"
-         char1="-"/>
+                      char1="-"/>
         <Detect2Chars attribute="Error" context="#stay" char="*"
-         char1="*"/>
+                      char1="*"/>
         <Detect2Chars attribute="Error" context="#stay" char="."
-         char1="="/>
+                      char1="="/>
         <DetectChar attribute="Error" context="#stay" char=";"/>
         <AnyChar attribute="OtherSymbol" context="#stay"
-         String=",[](){}:"/>
+                 String=",[](){}:"/>
         <Detect2Chars attribute="OtherSymbol" context="#stay"
-         char="-" char1="&gt;"/>
+                      char="-" char1="&gt;"/>
         <AnyChar attribute="OperatorSymbol" context="#stay"
-         String=".=~+-*/%&amp;|^&gt;&lt;"/>
+                 String=".=~+-*/%&amp;|^&gt;&lt;"/>
       </context>
 
       <context name="PrepStmtBlock" attribute="Preprocessor"
-          fallthroughContext="#pop" lineEndContext="#stay">
+               fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <RegExpr attribute="Preprocessor" String="[^\}\{\'\&quot;]"/>
         <DetectChar attribute="Preprocessor"
-         context="PrepStringDouble" char="&quot;"/>
+                    context="PrepStringDouble" char="&quot;"/>
         <DetectChar attribute="Preprocessor"
-         context="PrepStringSingle"
-         char="'"/>
+                    context="PrepStringSingle"
+                    char="'"/>
         <DetectChar char="{" attribute="Preprocessor"
-         context="PrepStmtBlock"/>
+                    context="PrepStmtBlock"/>
         <DetectChar char="}" attribute="Preprocessor"
-         context="#pop"/>
+                    context="#pop"/>
       </context>
 
       <context name="DoCStmt" attribute="InlineC"
-          fallthroughContext="#pop" lineEndContext="#stay">
+               fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
         <keyword String="nameditemkeywords" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <DetectChar attribute="InlineC"
-         context="InlineCStringDouble" char="&quot;"/>
+                    context="InlineCStringDouble" char="&quot;"/>
         <RegExpr attribute="InlineC"
-         context="InlineCStringDouble" String="b&quot;"/>
+                 context="InlineCStringDouble" String="c&quot;"/>
         <DetectChar attribute="InlineC" context="InlineCStringSingle"
-         char="'"/>
+                    char="'"/>
         <RegExpr attribute="InlineC" context="InlineCStringSingle"
-         String="b'"/>
+                 String="c'"/>
         <DetectChar char="{" attribute="InlineC"
-         context="#pop!DoCStmtBlock"/>
+                    context="#pop!DoCStmtBlock"/>
       </context>
       
       <context name="DoCStmtBlock" attribute="InlineC"
-          fallthroughContext="#pop" lineEndContext="#stay">
+               fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <RegExpr attribute="InlineC" String="[^\}\{\'\&quot;]"/>
-        <DetectChar attribute="InlineC" context="StringDouble" char="&quot;"/>
+        <DetectChar attribute="InlineC" context="StringDouble"
+                    char="&quot;"/>
         <DetectChar attribute="InlineC" context="StringSingle"
-         char="'"/>
+                    char="'"/>
         <DetectChar char="{" attribute="InlineC"
-         context="DoCStmtBlock"/>
+                    context="DoCStmtBlock"/>
         <DetectChar char="}" attribute="InlineC"
-         context="#pop"/>
+                    context="#pop"/>
       </context>
 
       <context name="NamedItemVarHadName" attribute="Import"
-          fallthroughContext="#pop" lineEndContext="#stay">
+               fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <DetectChar char="," attribute="OperatorSymbol"
-         context="#pop!NamedItemVar"/>
+                    context="#pop!NamedItemVar"/>
         <RegExpr attribute="IdentifierPastName" context="#pop"
-         String="&IDENT;" lookAhead="true"/>
+                 String="&IDENT;" lookAhead="true"/>
         <AnyChar String="#'&quot;()[]{}()+=-./:&gt;&lt;;"
-         context="#pop" lookAhead="true"/>
+                 context="#pop" lookAhead="true"/>
       </context>
 
       <context name="NamedItemVar" attribute="Import"
-          fallthroughContext="#pop" lineEndContext="#stay">
+               fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <RegExpr attribute="ItemName" context="#pop!NamedItemVarHadName"
-         String="&IDENT;"/>
+                 String="&IDENT;"/>
         <AnyChar String="#'&quot;()[]{}()+=-,/:&gt;&lt;;" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
       </context>
 
       <context name="NamedItemHadName" attribute="Import"
-          fallthroughContext="#pop" lineEndContext="#stay">
+               fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <DetectChar char="." attribute="OperatorSymbol"
-         context="#pop!NamedItem"/>
+                    context="#pop!NamedItem"/>
         <RegExpr attribute="IdentifierPastName" context="#pop"
-         String="&IDENT;" lookAhead="true"/>
+                 String="&IDENT;" lookAhead="true"/>
         <AnyChar String="#'&quot;()[]{}()+=-,/:&gt;&lt;;"
-         context="#pop" lookAhead="true"/>
+                 context="#pop" lookAhead="true"/>
       </context>
 
       <context name="NamedItem" attribute="Import"
@@ -305,25 +310,26 @@ This is a syntax highlighting intended for kate and other KDE editors.
         <DetectSpaces/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <DetectChar char="." attribute="OperatorSymbol"
-         context="#stay"/>
+                    context="#stay"/>
         <WordDetect attribute="SpecialItemName" String="init"
-         context="#pop!NamedItemHadName"/>
+                    context="#pop!NamedItemHadName"/>
         <WordDetect attribute="SpecialItemName" String="as_str"
-         context="#pop!NamedItemHadName"/>
+                    context="#pop!NamedItemHadName"/>
         <WordDetect attribute="SpecialItemName" String="copy"
-         context="#pop!NamedItemHadName"/>
+                    context="#pop!NamedItemHadName"/>
         <WordDetect attribute="SpecialItemName" String="modinit"
-         context="#pop!NamedItemHadName"/>
+                    context="#pop!NamedItemHadName"/>
         <RegExpr attribute="SpecialItemName" String="modinit\\_&IDENT;"
-         context="#pop!NamedItemHadName"/>
+                 context="#pop!NamedItemHadName"/>
         <RegExpr attribute="ItemName" context="#pop!NamedItemHadName"
-         String="&IDENT;"/>
-        <AnyChar String="#'&quot;()[]{}()+=-,/:&gt;&lt;;" context="#pop"
-         lookAhead="true"/>
+                 String="&IDENT;"/>
+        <AnyChar String="#'&quot;()[]{}()+=-,/:&gt;&lt;;"
+                 context="#pop"
+                 lookAhead="true"/>
       </context>
 
       <context name="WithStmt" attribute="NormalText"
@@ -331,120 +337,124 @@ This is a syntax highlighting intended for kate and other KDE editors.
         <DetectSpaces/>
         <WordDetect String="as" context="NamedItem" attribute="Keyword"/>
         <keyword attribute="DeclKeyword" context="#pop"
-         String="nameditemkeywords"/>
+                 String="nameditemkeywords"/>
         <AnyChar String="#'&quot;()[]{}()+=-,/:&gt;&lt;;" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <IncludeRules context="Expression"/>
       </context>
 
       <context name="Import" attribute="Import" lineEndContext="#stay">
         <DetectSpaces/>
         <keyword attribute="Keyword"
-         context="#stay" String="importinnerkeywords"/>
+                 context="#stay" String="importinnerkeywords"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
         <keyword String="nameditemkeywords" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
         <RegExpr attribute="ModuleRef" context="#stay"
-         String="&IDENT;"/>
+                 String="&IDENT;"/>
         <DetectChar char="." attribute="OtherSymbol" context="#stay"/>
         <AnyChar String="#'&quot;(){}[]()+=-,/:&gt;&lt;;" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
       </context>
 
       <context name="CImport" attribute="Import" lineEndContext="#stay">
         <DetectSpaces/>
-        <WordDetect String="as" context="#pop!NamedItem" attribute="Keyword"/>
+        <WordDetect String="as" context="#pop!NamedItem"
+                    attribute="Keyword"/>
         <keyword String="nameditemkeywords" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
         <RegExpr attribute="Preprocessor" context="PrepStmtBlock"
-         String="prep\{"/>
+                 String="prep\{"/>
         <keyword String="keywords" context="#pop" lookAhead="true"/>
-        <DetectChar attribute="Strings" context="StringDouble" char="&quot;"/>
+        <DetectChar attribute="Strings" context="StringDouble"
+                    char="&quot;"/>
         <DetectChar attribute="Strings" context="StringSingle"
-         char="'"/>
+                    char="'"/>
         <AnyChar String="#'&quot;(){}[]()+=-,/:&gt;&lt;;" context="#pop"
-         lookAhead="true"/>
+                 lookAhead="true"/>
       </context>
 
       <context name="Comment" attribute="Comment" lineEndContext="#pop">
         <DetectSpaces/>
         <RegExpr attribute="DocAlertKeyword" context="#stay"
-         String="XXX+"/>
+                 String="XXX+"/>
         <keyword attribute="DocAlertKeyword"
-         context="#stay" String="docalertkeywords"/>
+                 context="#stay" String="docalertkeywords"/>
       </context>
 
       <context name="DocComment" attribute="DocComment"
                lineEndContext="#pop">
         <DetectSpaces/>
         <keyword attribute="DocCommentKeyword"
-         context="#stay" String="doccommentkeywords"/>
+                 context="#stay" String="doccommentkeywords"/>
         <RegExpr attribute="DocAlertKeyword" context="#stay"
-         String="XXX+"/>
+                 String="XXX+"/>
         <keyword attribute="DocAlertKeyword"
-         context="#stay" String="docalertkeywords"/>
+                 context="#stay" String="docalertkeywords"/>
       </context>
 
       <context name="StringSingle" attribute="Strings"
-         lineEndContext="#stay" dynamic="true">
+               lineEndContext="#stay" dynamic="true">
         <IncludeRules context="quoteescape"/>
         <StringDetect attribute="Strings" context="#pop" String="'"
-         dynamic="true"/>
+                      dynamic="true"/>
       </context>
 
       <context name="StringDouble" attribute="Strings"
-         lineEndContext="#stay" dynamic="true">
+               lineEndContext="#stay" dynamic="true">
         <IncludeRules context="quoteescape"/>
-        <StringDetect attribute="Strings" context="#pop" String="&quot;"
-         dynamic="true"/>
+        <StringDetect attribute="Strings" context="#pop"
+                      String="&quot;"
+                      dynamic="true"/>
       </context>
 
       <context name="quoteescape" attribute="SpecialChar"
-         lineEndContext="#stay">
+               lineEndContext="#stay">
         <RegExpr attribute="SpecialChar"
-         String="\\['&quot;ntr\\]" context="#stay"/>
+                 String="\\['&quot;ntr\\]" context="#stay"/>
       </context>
 
       <context name="InlineCStringSingle" attribute="InlineC"
-         lineEndContext="#stay" dynamic="true">
+               lineEndContext="#stay" dynamic="true">
         <IncludeRules context="inlinecquoteescape"/>
         <StringDetect attribute="InlineC" context="#pop" String="'"
-         dynamic="true"/>
+                      dynamic="true"/>
       </context>
 
       <context name="InlineCStringDouble" attribute="InlineC"
-         lineEndContext="#stay" dynamic="true">
+               lineEndContext="#stay" dynamic="true">
         <IncludeRules context="inlinecquoteescape"/>
         <StringDetect attribute="InlineC" context="#pop" String="&quot;"
-         dynamic="true"/>
+                      dynamic="true"/>
       </context>
 
       <context name="inlinecquoteescape" attribute="InlineC"
-         lineEndContext="#stay">
+               lineEndContext="#stay">
         <RegExpr attribute="InlineC"
-         String="\\['&quot;ntr\\]" context="#stay"/>
+                 String="\\['&quot;ntr\\]" context="#stay"/>
       </context>
 
       <context name="PrepStringSingle" attribute="Preprocessor"
-         lineEndContext="#stay" dynamic="true">
+               lineEndContext="#stay" dynamic="true">
         <IncludeRules context="prepquoteescape"/>
         <StringDetect attribute="Preprocessor" context="#pop" String="'"
-         dynamic="true"/>
+                      dynamic="true"/>
       </context>
 
       <context name="PrepStringDouble" attribute="Preprocessor"
-         lineEndContext="#stay" dynamic="true">
+               lineEndContext="#stay" dynamic="true">
         <IncludeRules context="prepquoteescape"/>
-        <StringDetect attribute="Preprocessor" context="#pop" String="&quot;"
-         dynamic="true"/>
+        <StringDetect attribute="Preprocessor" context="#pop"
+                      String="&quot;"
+                      dynamic="true"/>
       </context>
 
       <context name="prepquoteescape" attribute="Preprocessor"
-         lineEndContext="#stay">
+               lineEndContext="#stay">
         <RegExpr attribute="Preprocessor"
-         String="\\['&quot;ntr\\]" context="#stay"/>
+                 String="\\['&quot;ntr\\]" context="#stay"/>
       </context>
 
       <context name="Error" attribute="Error" lineEndContext="#stay">
@@ -453,50 +463,50 @@ This is a syntax highlighting intended for kate and other KDE editors.
 
     <itemDatas>
       <itemData name="Import" defStyleNum="dsImport"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="DocAlertKeyword" defStyleNum="dsAlert"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="DeclKeyword" defStyleNum="dsFunction"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="NormalText" defStyleNum="dsNormal"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="SpecialItemName" defStyleNum="dsBuiltIn"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="BuiltinFunc" defStyleNum="dsBuiltIn"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="BuiltinVar" defStyleNum="dsBuiltIn"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="Comment" defStyleNum="dsComment"/>
       <itemData name="DocComment" defStyleNum="dsDocumentation"/>
       <itemData name="Control" defStyleNum="dsControlFlow"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="Error" defStyleNum="dsError" spellChecking="false"/>
       <itemData name="Keyword" defStyleNum="dsKeyword"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="ModuleRef" defStyleNum="dsVariable"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="ItemName" defStyleNum="dsVariable"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="DocCommentKeyword" defStyleNum="dsAnnotation"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="SpecialValue" defStyleNum="dsBuiltIn"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="Number" defStyleNum="dsDecVal"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="SpecialChar" defStyleNum="dsSpecialChar"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="InlineC" defStyleNum="dsString"/>
       <itemData name="Strings" defStyleNum="dsString"/>
       <itemData name="OperatorSymbol" defStyleNum="dsOperator"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="OtherSymbol" defStyleNum="dsNormal"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="Identifier" defStyleNum="dsNormal"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="SelfVar" defStyleNum="dsVariable"
-       spellChecking="false"/>
+                spellChecking="false"/>
       <itemData name="Attribute" defStyleNum="dsAttribute"
-       spellChecking="false"/>
+                spellChecking="false"/>
     </itemDatas>
   </highlighting>
   <general>
