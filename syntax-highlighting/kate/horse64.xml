@@ -4,7 +4,8 @@
   <!ENTITY IDENT "[a-zA-Z_][^\s\=\!\[\]\(\)}{#\@\&#37;\$\^\*\+\-\/\\\&quot;\'\:\;\.\,\?\|\&amp;]*">
 ]>
 <!--
-Copyright (c) 2024, ellie/@ell1e & Horse64 authors (see AUTHORS.md).
+Copyright (c) 2024-2025, ellie/@ell1e & Horse64's contributors
+(see AUTHORS.md).
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -33,7 +34,7 @@ license, see accompanied LICENSE.md.
 <!--
 This is a syntax highlighting intended for kate and other KDE editors.
 -->
-<language name="Horse64" version="1" indenter="cstyle" kateversion="2.4"
+<language name="Horse64" version="1" indenter="normal" kateversion="2.4"
     section="Source" extensions="*.h64" mimetype="text/horse64">
   <highlighting>
     <list name="keywords">
