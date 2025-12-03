@@ -156,6 +156,8 @@ This is a syntax highlighting intended for kate and other KDE editors.
                     String="c_import" additionalDeliminator="."/>
         <WordDetect attribute="Control" context="DoCStmt"
                     String="do" additionalDeliminator="."/>
+        <WordDetect attribute="DeclKeyword" context="AliasStmt"
+                    String="alias"/>
         <keyword attribute="BuiltinFunc" context="#stay"
                  String="builtinfunc"/>
         <keyword attribute="BuiltinVar" context="#stay"
@@ -247,7 +249,7 @@ This is a syntax highlighting intended for kate and other KDE editors.
         <DetectChar char="{" attribute="InlineC"
                     context="#pop!DoCStmtBlock"/>
       </context>
-      
+
       <context name="DoCStmtBlock" attribute="InlineC"
                fallthroughContext="#pop" lineEndContext="#stay">
         <DetectSpaces/>
@@ -344,6 +346,33 @@ This is a syntax highlighting intended for kate and other KDE editors.
         <AnyChar String="#'&quot;()[]{}()+=-,/:&gt;&lt;;" context="#pop"
                  lookAhead="true"/>
         <IncludeRules context="Expression"/>
+      </context>
+
+      <context name="AliasStmt" attribute="NormalText"
+               lineEndContext="#stay">
+        <DetectSpaces/>
+        <WordDetect String="for" attribute="Keyword" context="#pop!AliasStmtTail"/>
+        <RegExpr attribute="ModuleRef" context="#stay"
+              String="&IDENT;"/>
+        <AnyChar String="#'&quot;(){}[]()+=-,/:&gt;&lt;;" context="#pop"
+                 lookAhead="true"/>
+        <keyword String="nameditemkeywords" context="#pop"
+                 lookAhead="true"/>
+      </context>
+
+      <context name="AliasStmtTail" attribute="NormalText"
+               lineEndContext="#stay">
+        <DetectSpaces/>
+        <keyword String="keywords" context="#pop" lookAhead="true"/>
+        <RegExpr attribute="ModuleRef" context="#stay"
+                 String="&IDENT;\w+\."/>
+        <DetectChar char="." attribute="OtherSymbol" context="#stay"/>
+        <RegExpr attribute="ModuleRef" context="#pop"
+                 String="&IDENT;"/>
+        <AnyChar String="#'&quot;(){}[]()+=-,/:&gt;&lt;;" context="#pop"
+                 lookAhead="true"/>
+        <keyword String="nameditemkeywords" context="#pop"
+                 lookAhead="true"/>
       </context>
 
       <context name="Import" attribute="Import" lineEndContext="#stay">
@@ -473,6 +502,7 @@ This is a syntax highlighting intended for kate and other KDE editors.
                 spellChecking="false"/>
       <itemData name="NormalText" defStyleNum="dsNormal"
                 spellChecking="false"/>
+      <itemData name="Preprocessor" defStyleNum="dsAnnotation"/>
       <itemData name="SpecialItemName" defStyleNum="dsBuiltIn"
                 spellChecking="false"/>
       <itemData name="BuiltinFunc" defStyleNum="dsBuiltIn"
