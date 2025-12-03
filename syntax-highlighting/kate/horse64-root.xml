@@ -131,6 +131,7 @@ This is a syntax highlighting intended for kate and other KDE editors.
     <list name="builtinfunc">
       <item>assert</item>
       <item>print</item>
+      <item>failnum</item>
     </list>
 
     <contexts>
