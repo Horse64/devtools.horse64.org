@@ -16,7 +16,8 @@ indicated otherwise, licensed under the following **BSD-2-Clause
 license**:
 
 ```
-Copyright (c) 2025-2026, ellie/@ell1e & devtools authors (see AUTHORS.md).
+Copyright (c) 2025-2026, ellie/@ell1e & devtools contributors
+(see AUTHORS.md).
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -247,63 +248,35 @@ following **Apache 2 License**:
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
-
-
-Contributions
--------------
-
-If you contribute to the Horse64 project, you **permit licensing as
-described in the respective files** and agree to the
-[DCO](#developer-certificate-of-origin) below. Using AI tools might
-potentially interfere with this, so we ask that you **don't contribute
-code made with involvement of AI code generation like Co-Pilot**
-for now.
-
-For this, sign your commit messages:
-
-`DCO-1.1-Signed-off-by: Your Name <your@email>`
-
-
-Developer Certificate of Origin
--------------------------------
-
-This is the Developer Certificate of Origin indicated by
-`DCO-1.1-Signed-off-by: name <email>` commit messages, which all
-contributors agree to adhere to:
+...with the following copyright notice:
 
 ```
-Developer Certificate of Origin
-Version 1.1
+Copyright (c) 2020-2026, ellie/@ell1e & devtools contributors
+(see AUTHORS.md).
 
-Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-Everyone is permitted to copy and distribute verbatim copies of this
-license document, but changing it is not allowed.
+    http://www.apache.org/licenses/LICENSE-2.0
 
-
-Developer's Certificate of Origin 1.1
-
-By making a contribution to this project, I certify that:
-
-(a) The contribution was created in whole or in part by me and I
-    have the right to submit it under the open source license
-    indicated in the file; or
-
-(b) The contribution is based upon previous work that, to the best
-    of my knowledge, is covered under an appropriate open source
-    license and I have the right under that license to submit that
-    work with modifications, whether created in whole or in part
-    by me, under the same open source license (unless I am
-    permitted to submit under a different license), as indicated
-    in the file; or
-
-(c) The contribution was provided directly to me by some other
-    person who certified (a), (b) or (c) and I have not modified
-    it.
-
-(d) I understand and agree that this project and the contribution
-    are public and that a record of the contribution (including all
-    personal information I submit with it, including my sign-off) is
-    maintained indefinitely and may be redistributed consistent with
-    this project or the open source license(s) involved.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
+
+Contributions, Binaries
+-----------------------
+
+The same rules apply as for [main repo contributions, including the DCO](
+    https://codeberg.org/Horse64/core.horse64.org/src/branch/main/LICENSE.md#contributions).
+
+Also, official devtools files and binaries may ship with or fetch
+[the official logos](
+    https://codeberg.org/Horse64/branding/src/branch/main/LICENSE.md)
+on demand, if updates are permitted by the user. Remember to disable
+that and to change the project name if you ever fork the devtools.
+
+
