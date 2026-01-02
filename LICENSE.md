@@ -16,7 +16,7 @@ indicated otherwise, licensed under the following **BSD-2-Clause
 license**:
 
 ```
-Copyright (c) 2025, ellie/@ell1e & devtools authors (see AUTHORS.md).
+Copyright (c) 2025-2026, ellie/@ell1e & devtools authors (see AUTHORS.md).
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
